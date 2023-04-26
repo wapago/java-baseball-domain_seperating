@@ -2,7 +2,6 @@ package wapago.baseball.controller;
 
 import wapago.baseball.constant.BaseBallProperties;
 import wapago.baseball.model.Computer;
-//import wapago.baseball.model.Match;
 import wapago.baseball.util.CreateRandomNumber;
 import wapago.baseball.util.InputValidator;
 import wapago.baseball.view.GameView;
@@ -12,8 +11,7 @@ public class BaseBallController {
 	
 	GameView gameView = new GameView();
 	Computer computer = new Computer();
-//	Match match = new Match();
-	
+
 	public void start() {
 		randomNumber = CreateRandomNumber.createRandomNumber();
 		play();
@@ -23,7 +21,6 @@ public class BaseBallController {
 		gameView.requestInput();
 		String inputNumber = gameView.getInputNumber();
 		InputValidator.setValidator(inputNumber);
-//		match.setMatchWithRndNumber(inputNumber);
 	}
 	
 	public void askRestart() {
