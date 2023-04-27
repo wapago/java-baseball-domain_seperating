@@ -11,7 +11,7 @@ public class InputValidator {
 	static BaseBallController baseBallController = new BaseBallController();
 	private final static String NUMERIC = "^[1-9]+$";
 	
-	public static void setValidator(String inputNumber) {
+	public static void playInputValidator(String inputNumber) {
 		isNumeric(inputNumber);
 		isContainZero(inputNumber);
 		isThreeNumber(inputNumber);
@@ -41,5 +41,16 @@ public class InputValidator {
 		if(checkSet.size() != BaseBallProperties.LENGTH_OF_NUMBER) {
 			throw new IllegalArgumentException("중복된 숫자는 입력할 수 없습니다.");
 		}
+	}
+
+	private static void isOneNumber(String inputRestart) {
+		if(inputRestart.length() != 1) {
+			throw new IllegalArgumentException("한 자리 정수를 입력해주세요");
+		}
+	}
+
+	public static void restartInputValidator(String inputRestart) {
+		isNumeric(inputRestart);
+		isOneNumber(inputRestart);
 	}
 }
