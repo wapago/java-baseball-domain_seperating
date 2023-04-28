@@ -1,19 +1,24 @@
 package wapago.baseball.util;
 
 import wapago.baseball.constant.BaseBallProperties;
-import wapago.baseball.controller.BaseBallController;
 import wapago.baseball.model.Result;
 
 import java.util.Arrays;
 import java.util.List;
 
 public class MatchWithRndNumber {
-    static Integer[] randomNumber = BaseBallController.randomNumber;
+    Integer[] randomNumber = new Integer[3];
 
-    static int strike = 0;
-    static int ball = 0;
+    public void setRandomNumber(Integer[] numbers) {
+        for(int i=0; i<BaseBallProperties.LENGTH_OF_NUMBER; i++) {
+            randomNumber[i] = numbers[i];
+        }
+    }
 
-    public static int[] setMatchWithRandomNumber(String inputNumber) {
+    int strike = 0;
+    int ball = 0;
+
+    public Result setMatchWithRandomNumber(String inputNumber) {
         String[] inputNumberStringArr = inputNumber.split("");
         Integer[] inputNumberIntegerArr = new Integer[BaseBallProperties.LENGTH_OF_NUMBER];
 
@@ -26,15 +31,10 @@ public class MatchWithRndNumber {
 
         Result result = new Result(strike, ball);
 
-        int resultStrike = result.getStrike();
-        int resultBall = result.getBall();
-
-        int[] resultArray = {resultStrike, resultBall};
-
-        return resultArray;
+        return result;
     }
 
-    private static void countStrike(Integer[] inputNumberIntegerArr) {
+    private void countStrike(Integer[] inputNumberIntegerArr) {
         strike = 0;
 
         for(int i=0; i<BaseBallProperties.LENGTH_OF_NUMBER; i++) {
@@ -44,7 +44,7 @@ public class MatchWithRndNumber {
         }
     }
 
-    private static void countBall(Integer[] inputNumberIntegerArr) {
+    private void countBall(Integer[] inputNumberIntegerArr) {
         ball = 0;
 
         List<Integer>  randomNumberList = Arrays.asList(randomNumber);

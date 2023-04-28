@@ -1,14 +1,12 @@
 package wapago.baseball.util;
 
 import wapago.baseball.constant.BaseBallProperties;
-import wapago.baseball.controller.BaseBallController;
 
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
 public class InputValidator {
-	static BaseBallController baseBallController = new BaseBallController();
 	private final static String NUMERIC = "^[1-9]+$";
 	
 	public static void playInputValidator(String inputNumber) {
@@ -50,7 +48,9 @@ public class InputValidator {
 	}
 
 	public static void restartInputValidator(String inputRestart) {
-		isNumeric(inputRestart);
-		isOneNumber(inputRestart);
+		String restart = String.valueOf(inputRestart);
+
+		isNumeric(restart);
+		isOneNumber(restart);
 	}
 }

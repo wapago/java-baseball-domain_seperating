@@ -7,10 +7,10 @@ import java.util.Collections;
 import java.util.List;
 
 public class CreateRandomNumber {
-	private static List<Integer> oneToNine = new ArrayList<>();
-	private static Integer[] randomNumberArr = new Integer[BaseBallProperties.LENGTH_OF_NUMBER];
+	private List<Integer> oneToNine = new ArrayList<>();
+	private final Integer[] randomNumberArr = new Integer[BaseBallProperties.LENGTH_OF_NUMBER];
 	
-	public static Integer[] createRandomNumber() {
+	public Integer[] createRandomNumber() {
 		createOneToNine();
 		shuffle(oneToNine);
 		
@@ -21,15 +21,13 @@ public class CreateRandomNumber {
 		return randomNumberArr;
 	}
 	
-	private static void createOneToNine() {
+	private void createOneToNine() {
 		for(int i=BaseBallProperties.MIN_NUMBER_RANGE; i<=BaseBallProperties.MAX_NUMBER_RANGE; i++) {
 			oneToNine.add(i);
 		}
 	}
 	
-	private static List<Integer> shuffle(List<Integer> oneToNine) {
+	private static void shuffle(List<Integer> oneToNine) {
 		Collections.shuffle(oneToNine);
-		
-		return oneToNine;
 	}
 }

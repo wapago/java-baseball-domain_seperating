@@ -1,29 +1,35 @@
 package wapago.baseball.controller;
 
 import wapago.baseball.constant.BaseBallProperties;
+import wapago.baseball.model.Result;
 import wapago.baseball.util.CreateRandomNumber;
-import wapago.baseball.util.InputValidator;
 import wapago.baseball.util.MatchWithRndNumber;
 import wapago.baseball.view.GameView;
 
 public class BaseBallController {
-	public static Integer[] randomNumber = new Integer[BaseBallProperties.LENGTH_OF_NUMBER];
+	public Integer[] randomNumber = new Integer[3];
 	
 	GameView gameView = new GameView();
+	CreateRandomNumber createRandomNumber = new CreateRandomNumber();
+	MatchWithRndNumber matchWithRandomNumber = new MatchWithRndNumber();
 
 	public void start() {
-		randomNumber = CreateRandomNumber.createRandomNumber();
+		createRandomNumber();
 		play();
 	}
-	
+
+	public void createRandomNumber() {
+		randomNumber = createRandomNumber.createRandomNumber();
+	}
+
 	public void play() {
 		int strike = 0;
 
 		while(strike != 3) {
 			gameView.requestInput();
 			String inputNumber = gameView.getInputNumber();
-			InputValidator.playInputValidator(inputNumber);
-			int[] result = MatchWithRndNumber.setMatchWithRandomNumber(inputNumber);
+			matchWithRandomNumber.setRandomNumber(randomNumber);
+			Result result = matchWithRandomNumber.setMatchWithRandomNumber(inputNumber);
 			strike = gameView.showResult(result);
 		}
 
@@ -32,10 +38,9 @@ public class BaseBallController {
 	
 	public void isRestart() {
 		gameView.askRestart();
-		String inputRestart = gameView.getInputNumber();
-		InputValidator.restartInputValidator(inputRestart);
+		int inputRestart = gameView.getInputRestartNumber();
 
-		if(inputRestart.equals("1")) {
+		if(inputRestart == BaseBallProperties.RESTART) {
 			start();
 		}
 

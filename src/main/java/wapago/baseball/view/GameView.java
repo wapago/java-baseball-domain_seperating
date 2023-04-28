@@ -1,25 +1,37 @@
 package wapago.baseball.view;
 
 import wapago.baseball.constant.BaseBallProperties;
+import wapago.baseball.model.Result;
+import wapago.baseball.util.InputValidator;
 
 import java.util.Scanner;
 
 public class GameView {
 	Scanner scanner = new Scanner(System.in);
-	
+
+	InputValidator inputValidator = new InputValidator();
+
 	public void requestInput() {
 		System.out.println("숫자를 입력하세요 : ");
 	}
 	
 	public String getInputNumber() {
 		String inputNumber = scanner.next();
+		inputValidator.playInputValidator(inputNumber);
 		
 		return inputNumber; 
 	}
 
-	public int showResult(int[] result) {
-		int strike = result[0];
-		int ball = result[1];
+	public int getInputRestartNumber() {
+		String inputRestart = scanner.next();
+		inputValidator.restartInputValidator(inputRestart);
+
+		return Integer.parseInt(inputRestart);
+	}
+
+	public int showResult(Result result) {
+		int strike = result.getStrike();
+		int ball = result.getBall();
 
 		if(strike != 0 && ball == 0) {
 			System.out.println(strike + "스트라이크");
