@@ -47,9 +47,7 @@ public class InputValidator {
 		}
 	}
 
-	public static void restartInputValidator(String inputRestart) {
-		String restart = String.valueOf(inputRestart);
-
+	public static void restartInputValidator(String restart) {
 		isNumeric(restart);
 		isOneNumber(restart);
 	}
