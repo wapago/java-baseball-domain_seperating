@@ -17,7 +17,7 @@ public class CreateRandomNumber {
 		for(int i=0; i<BaseBallProperties.LENGTH_OF_NUMBER; i++) {
 			randomNumberArr[i] = oneToNine.get(i);
 		}
-		
+
 		return randomNumberArr;
 	}
 	
@@ -27,7 +27,7 @@ public class CreateRandomNumber {
 		}
 	}
 	
-	private static void shuffle(List<Integer> oneToNine) {
+	private void shuffle(List<Integer> oneToNine) {
 		Collections.shuffle(oneToNine);
 	}
 }
